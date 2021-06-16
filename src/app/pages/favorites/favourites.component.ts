@@ -7,6 +7,7 @@ import { MovieService, StateService, UserService } from '@core/services';
 import { MovieDetailsComponent } from '@shared/components/movie-details/movie-details.component';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-favourites',
@@ -18,6 +19,7 @@ export class FavouritesComponent implements OnDestroy {
   userSubscription: Subscription;
   favourites: IMovie[] = [];
   genreName: any = [];
+  faHeart = faHeart;
 
   constructor(
     private dialog: MatDialog,

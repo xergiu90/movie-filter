@@ -24,7 +24,18 @@
   }
 
   .favourites {
-    margin-top: 20px;
+    position: relative;
+    width: 100%;
+  }
+
+  fa-icon {
+    font-size: 30px;
+    position: absolute;
+    right: 10px;
+
+    &.is-favorite {
+      color: red;
+    }
   }
 
 }

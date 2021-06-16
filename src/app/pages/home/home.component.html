@@ -54,18 +54,20 @@
   <div class="searching" fxFlex="100" *ngIf="loading">Searching....</div>
   <div class="movies-container" fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100">
     <ng-container *ngFor="let movie of sortedAndFilteredMovies">
-      <mat-card class="movie" fxFlex="1 1 24" fxFlex.lt-lg="0 1 48" fxFlex.lt-sm="0 1 95" fxLayout="row wrap">
-        <div fxFlex="50%">
-          <div class="photo-container"
-               *ngIf="movie.posterURL"
-               [ngStyle]="{'width': '200px', 'height': '305px'}">
-            <img class="photo-tag"
-                 *ngIf="movie.posterURL"
-                 [ngStyle]=" {'width': '200px', 'height': '305px' }"
-                 src="{{movie.posterURL}}"/>
-          </div>
+      <mat-card class="movie" fxFlex="1 1 24" fxFlex.lt-lg="0 1 48" fxFlex.lt-sm="0 1 95" fxLayout="column wrap" fxLayoutAlign="center center" fxLayoutGap="20px">
+        <div class="favourites" fxLayoutAlign="center center">
+          <i class="fas fa-heart"></i>
+          <fa-icon [icon]="faHeart" [ngClass]="{ 'is-favorite' : movie.isFavourite }" (click)="toggleFavourites(movie)"></fa-icon>
         </div>
-        <div fxFlex="50%" fxLayout="row wrap">
+        <div class="photo-container"
+             *ngIf="movie.posterURL"
+             [ngStyle]="{'width': '200px', 'height': '305px'}">
+          <img class="photo-tag"
+               *ngIf="movie.posterURL"
+               [ngStyle]=" {'width': '200px', 'height': '305px' }"
+               src="{{movie.posterURL}}"/>
+        </div>
+        <div fxLayout="row wrap">
           <div class="user-info" fxFlex="calc(100%-60px)" fxLayout="row wrap" fxLayoutAlign="start start">
             <div class="pointer" fxFlex="100" (click)="showMovieDetails(movie)">
               <span class="movie-title">{{movie.name}}</span>
@@ -83,12 +85,6 @@
                                                                       *ngFor="let genre of movie.genre">{{genreName[genre]}} </span>
             </div>
           </div>
-        </div>
-
-        <div class="favourites" fxFlex="100" fxLayoutAlign="center center">
-          <button mat-raised-button color="{{!movie.isFavourite ? 'accent': 'primary'}}"  (click)="toggleFavourites(movie)">
-            {{!movie.isFavourite ? 'Add to Favorites': 'Remove from Favourites'}}
-          </button>
         </div>
       </mat-card>
     </ng-container>

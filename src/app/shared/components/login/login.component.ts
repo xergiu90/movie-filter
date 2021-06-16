@@ -1,6 +1,8 @@
 import { ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { RoutingService } from '@core/services';
 import { AuthenticationService } from '@core/services/authentication.service';
 
 @Component({
@@ -13,7 +15,6 @@ export class LoginComponent {
     password: new FormControl('', [Validators.required]),
   });
   isInvalidCredentials = false;
-  hidePassword = true;
 
   getErrorMessage() {
     if (this.loginForm.controls['email'].hasError('required')) {
@@ -34,12 +35,15 @@ export class LoginComponent {
   constructor(
     private dialogRef: MatDialogRef<LoginComponent>,
     private cdr: ChangeDetectorRef,
-    private authService: AuthenticationService,) {}
+    private authService: AuthenticationService,
+    private routingService: RoutingService,
+    private router: Router) {}
 
   onLogin() {
     if(this.authService.login(this.loginForm.controls['email'].value, this.loginForm.controls['password'].value)) {
       this.isInvalidCredentials = false;
       this.dialogRef.close();
+      this.router.navigate([this.routingService.HOME.url()]);
       this.cdr.detectChanges();
     } else {
       this.isInvalidCredentials = true;

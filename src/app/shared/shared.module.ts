@@ -4,6 +4,7 @@ import { FlexModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CoreModule } from '@core/core.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { LoginComponent } from '@shared/components/login/login.component';
 import { MainNavComponent } from '@shared/components/main-nav/main-nav.component';
 import { MovieDetailsComponent } from '@shared/components/movie-details/movie-details.component';
@@ -17,7 +18,8 @@ import { MaterialModule } from '@shared/modules/material.module';
     FormsModule,
     MaterialModule,
     FlexModule,
-    CoreModule
+    CoreModule,
+    FontAwesomeModule
   ],
   declarations: [
     MainNavComponent,
@@ -30,6 +32,7 @@ import { MaterialModule } from '@shared/modules/material.module';
     FormsModule,
     MaterialModule,
     MainNavComponent,
+    FontAwesomeModule,
     FlexModule
   ],
   providers: []

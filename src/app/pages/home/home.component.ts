@@ -1,7 +1,6 @@
-import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { Router } from '@angular/router';
 import { IGenre } from '@core/interfaces/genre.interface';
 import { IMovie } from '@core/interfaces/movie.interface';
 import { User } from '@core/models/user.model';
@@ -10,6 +9,7 @@ import { MovieDetailsComponent } from '@shared/components/movie-details/movie-de
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, tap } from 'rxjs/operators';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'favorites',
@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   filterByYear: number;
   filterByGenre: number;
   genreName: any;
+  faHeart = faHeart;
 
   get movieYears() {
     const uniqueYears = [...new Set(this.movies.map(mov => mov.year))].sort((a, b) => {

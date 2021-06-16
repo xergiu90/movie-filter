@@ -15,6 +15,7 @@ export class ModalService {
   public openLoginModal() {
     this.dialog.open(LoginComponent, {
       width: '350px',
+      height: '320px',
       disableClose: true
     });
   }
