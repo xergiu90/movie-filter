@@ -1,0 +1,15 @@
+<div class="main-menu" fxLayoutAlign="space-between center">
+  <div>
+    <a mat-button color="primary" [routerLink]="routingService.HOME.url()"  [routerLinkActive]="['item-selected']">
+      Home
+    </a>
+    <a mat-button color="primary" [routerLink]="routingService.FAVORITES.url()" [routerLinkActive]="['item-selected']">
+      Favorites
+    </a>
+  </div>
+  <mat-form-field fxFlex="30%">
+    <mat-label>Enter API Key</mat-label>
+    <input matInput [(ngModel)]="apiKey" (input)="setAPIKey($event)">
+  </mat-form-field>
+  <button mat-raised-button color="warn" *ngIf="loggedIn" (click)="onLogout()">Logout</button>
+</div>

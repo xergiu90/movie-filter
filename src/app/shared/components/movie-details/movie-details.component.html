@@ -1,0 +1,34 @@
+<div class="modal-container">
+  <span class="close-button">
+    <button
+      (click)="close()">x
+    </button>
+  </span>
+  <span class="modal-title" mat-dialog-title>Poster for {{ movie.name }}</span>
+  <mat-dialog-content>
+    <ng-container *ngIf="movie.posterURL">
+      <div fxLayout="column">
+        <div fxLayout="row wrap" fxLayoutAlign="space-between center" class="margin-top-10">
+          <div fxFlex="100" class="form-field" fxLayoutAlign="center center">
+            <div class="photo-container"
+                 *ngIf="movie.posterURL"
+                 [ngStyle]="{ 'width': '300px'}">
+              <img class="photo-tag"
+                   *ngIf="movie.posterURL"
+                   [ngStyle]=" { 'width': '300px' }"
+                   src="{{movie.posterURL}}"/>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </ng-container>
+  </mat-dialog-content>
+  <div fxLayoutAlign="center center" mat-dialog-actions>
+    <button
+      mat-raised-button color="primary"
+      (click)="close()">
+      Close
+    </button>
+  </div>
+</div>

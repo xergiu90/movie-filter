@@ -1,0 +1,46 @@
+<div class="favourites-page" fxFlex="100" fxLayout="row wrap">
+  <h2 fxFlex="100">Favourite Movies</h2>
+
+  <div class="users-container" fxLayout="row wrap" fxLayoutGap="10px" fxFlex="100">
+    <ng-container *ngFor="let movie of favourites">
+      <mat-card class="movie" fxFlex="1 1 24" fxFlex.lt-lg="0 1 48" fxFlex.lt-sm="0 1 95" fxLayout="row wrap">
+        <div fxFlex="50%">
+          <div class="photo-container"
+               *ngIf="movie.posterURL"
+               [ngStyle]="{'width': '200px', 'height': '290px'}">
+            <img class="photo-tag"
+                 *ngIf="movie.posterURL"
+                 [ngStyle]=" {'width': '200px', 'height': '290px' }"
+                 src="{{movie.posterURL}}"/>
+          </div>
+        </div>
+        <div fxFlex="50%" fxLayout="row wrap">
+          <div class="user-info" fxFlex="calc(100%-60px)" fxLayout="row wrap" fxLayoutAlign="start start">
+            <div class="pointer" fxFlex="100" (click)="showMovieDetails(movie)">
+              <span class="movie-title">{{movie.name}}</span>
+            </div>
+            <div fxFlex="100">Year: <span class="bold">{{movie.year}}</span></div>
+          </div>
+          <div fxFlex="calc(60px)" class="rating-wrapper" fxLayout="row wrap" fxLayoutAlign="center start">
+            <div fxFlex="100">Rating:</div>
+            <div class="rating" fxFlex="100">
+              <span>{{ movie.rating }}</span>
+            </div>
+          </div>
+          <div fxFlex="100" fxLayoutAlign="start start">
+            <div fxFlex="100" *ngIf="movie.genre.length">Genre: <span class="genre-token"
+                                                                      *ngFor="let genre of movie.genre">{{genreName[genre]?genreName[genre]:''}} </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="favourites" fxFlex="100" fxLayoutAlign="center center">
+          <button mat-raised-button color="{{!movie.isFavourite ? 'accent': 'primary'}}"  (click)="toggleFavourites(movie)">
+            {{!movie.isFavourite ? 'Add to Favorites': 'Remove from Favourites'}}
+          </button>
+        </div>
+      </mat-card>
+    </ng-container>
+  </div>
+</div>
+

@@ -1,0 +1,14 @@
+::ng-deep .cdk-overlay-dark-backdrop {
+  background: white;
+}
+
+::ng-deep .toast-top-center > .toast-error {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: whitesmoke;
+  border: 1px solid lightgrey;
+  padding: 10px 20px;
+  border-radius: 14px;
+}
